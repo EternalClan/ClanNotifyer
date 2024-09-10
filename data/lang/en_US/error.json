@@ -1,0 +1,13 @@
+{
+    "channel": {
+        "wrong": "Nope, not here, try somewhere else."
+    },
+    "command": {
+        "execute": "There was an error trying to execute this command!",
+        "cooldown": "Please wait, you are on a cooldown for `$s`.",
+        "disabled": "This Command is Disabled right now."
+    },
+    "permmission": {
+        "admin": "Yeah sorry, but you are not in charge of me."
+    }
+}

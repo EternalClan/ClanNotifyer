@@ -1,0 +1,392 @@
+{
+    "name": "English",
+    "code": "en_US",
+    "prefix": {
+        "bot": "Bot",
+        "discord": "Discord",
+        "twitch": "Twitch",
+        "chat": "Chat",
+        "error": "Error",
+        "warn": "Warning"
+    },
+    "cmd": {
+        "admin": {
+            "channel": {
+                "title": "Channels command",
+                "helpname": "Commands",
+                "helpvalue": "`channels` - Commands relating to info.\n`  ⤷ help`   - Displays this help text.\n`  ⤷ list`   - A list of set Channels.\n`  ⤷ set`    - Set's the Channel in one of Five Category's.\n`  ⤷ remove` - Removes the Channel from it's Category's.",
+                "nodata": "No Data found.",
+                "bot": "Bot",
+                "notifyer": "notifyers",
+                "set": "The Channel $s has been added to $s Channels",
+                "isset": "$s is already set as $s Channel",
+                "remove": "The Channel $s has been removed from $s Channels",
+                "prune": "$s Channels have been pruned from the Database.",
+                "nochannelinserver": "There is no Channel with this Name nor ID on this Server.",
+                "nochannelinlist": "There is no Channel with this Name nor ID on this List.",
+                "noaddall": "You can't add ALL Channels at once to the lists, plus i don't know to which list to begin with. 🤨 ",
+                "noremoveall": "You can't remove ALL Channels at once from the lists, plus i don't know to which list to begin with. 🤨 "
+            },
+            "config": {
+                "title": "Configs",
+                "name": "Commands",
+                "value": "`config` - Commands relating to config.\n`  ⤷ help`           - Displays this help text.\n`  ⤷ list`           - A list of set Configurations.\n`  ⤷ command admin`  - Set's the configs and commands for admins 'ON' or 'OFF'.\n`  ⤷ command member` - Set's the configs and commands for members 'ON' or 'OFF'.\n`  ⤷ database`       - Set's the database functions 'ON' or 'OFF'.\n`  ⤷ logs`           - Set's the logging for bots and commands 'ON' or 'OFF'.\n`  ⤷ reaction`       - Set's the word and emoji reactions 'ON' or 'OFF'.\n`  ⤷ twitch`         - Set's the twitch handler and functions 'ON' or 'OFF'.\n",
+                "editcanceled": "Editing Config Canceled",
+                "isset": "This is already set to `$s`",
+                "set": "Now set to `$s`",
+                "true": "ON",
+                "false": "OFF"
+            },
+            "language": {
+                "title": "Language command",
+                "helpname": "Commands",
+                "helpvalue": "`language` - Commands relating to language.\n`  ⤷ help` - Displays this help text.\n`  ⤷ list` - A list of set Languages.\n`  ⤷ set`  - Set's a supported language for text output.\n",
+                "nodate": "No Data Found.",
+                "desclist": "Available Languages",
+                "listname1": "Name",
+                "listname2": "Code",
+                "isset": "Already set to `$s`",
+                "set": "Language set to `$s`"
+            },
+            "notifyers": {
+                "all": "all",
+                "twitch": {
+                    "title": "Command - Twitch",
+                    "helptitle": "Commands:",
+                    "helpvalue": "`twitch` - Commands relating to twitch.\n`  ⤷ help`   - Displays this help text.\n`  ⤷ list`   - A list of twitch announcements.\n`  ⤷ set`    - Set's the twitch announcement.\n`  ⤷ remove` - Removes the twitch announcement.",
+                    "norecordfound": "No record found.",
+                    "listofchannels": "List of the Twitch Channels.",
+                    "twitchchannelid": "TwitchChannelID:",
+                    "mentions": "Mentions:",
+                    "announce": "Announce:",
+                    "notoken": "No Token in Database!",
+                    "tokenneeded": "Sorry but you need the Twitch Token, cause i check if the twitch channel even exists.",
+                    "notatwitchchannel": "Twitch Channel '$s' does not exist.",
+                    "isalreadyset": "This Channel is already set as an Twitch Announcement.",
+                    "announcementset": "The Channel $s has been added as an Twitch Announcement.\nAnnounce: `$s`\nMention: $s",
+                    "chanelnotfound": "No Twitch Announcement with this Twitch Channel found.",
+                    "announcementupdated": "Twitch Announcement for Channel $s has been updated.\nAnnounce: `$s`\nMention: $s",
+                    "idnotfound": "There is no Twitch Announcement with this ID on this List.",
+                    "annoncementremoved": "The Twitch Announcement for channel `$s` has been removed.",
+                    "prune": "$s Channels have been pruned from the Database."
+                },
+                "youtube": {
+                    "null": "null"
+                },
+                "tiktok": {
+                    "null": "null"
+                }
+            },
+            "logs": {
+                "title": "Logs command",
+                "name": "Commands",
+                "value": "`logs` - Commands relating to logs.\n`  ⤷ help`    - Displays this help text.\n`  ⤷ channel` - Set's Create, Delete, Update for channel 'ON' or 'OFF'.\n`  ⤷ emoji`   - Set's Create, Delete, Update for emoji 'ON' or 'OFF'.\n`  ⤷ message` - Set's Delete, Bulk Delete, Update for message 'ON' or 'OFF'.\n`  ⤷ roles`   - Set's Create, Delete, Update for roles 'ON' or 'OFF'.\n`  ⤷ invite`  - Set's Create, Delete for invite 'ON' or 'OFF'.\n`  ⤷ event`   - Set's Create, Delete, Update, User Add, User Remove for event 'ON' or 'OFF'.\n`  ⤷ member`  - Set's Add, Remove, Update for member 'ON' or 'OFF'.\n`  ⤷ Ban`     - Set's Add, Remove for Ban 'ON' or 'OFF'.\n`  ⤷ guild`   - Set's Add, Remove, Update for guild 'ON' or 'OFF'.\n`  ⤷ misc`    - Set's Integrations Update, Command Permissions Update for misc 'ON' or 'OFF'.",
+                "isset": "This is already set to `$s`",
+                "set": "Now set to `$s`",
+                "off": "OFF",
+                "on": "ON"
+            },
+            "roles": {
+                "title": "Command - Roles",
+                "helptitle":" Commands",
+                "helpvalue": "`roles` - Commands relating to roles.\n`  ⤷ help`   - Displays this help text.\n`  ⤷ list`   - A list of set Roles.\n`  ⤷ set`    - Set's the Roles as Admin or Member Roles.\n`  ⤷ remove` - Removes the Roles from Admin or Member Roles.",
+                "nodata": "No Record found.",
+                "listofroles": "List of the Roles.",
+                "admin": "Admin",
+                "noroleserver": "There is no Role with this Name nor ID on this Server.",
+                "isset": "Role $s is already set as an $s Role.",
+                "set": "The Role $s has been added to the $s Roles.",
+                "removed": "$s has been removed from the $s Roles.",
+                "prune": "$s Roles have been pruned from the Database.",
+                "nomassadd": "You can't add ALL Roles at once to the lists, plus i don't know with which list to begin with. 🤨 ",
+                "norolelist": "There is no Role with this Name nor ID on this List.",
+                "nomassremove": "You can't Remove ALL Roles at once from the lists, plus i don't know with which list to begin with. 🤨 "
+            },
+            "help": {
+                "title": "Command - Help (Admin)",
+                "prefix": "Prefix",
+                "commands": "Commands:",
+                "descriptions": "Description:"
+            },
+            "info": {
+                "title": "Command - Info",
+                "helptitle": "Commands",
+                "helpvalue": "`info` - Commands relating to infoss.\n` ⤷help` - Displays this help text.\n` ⤷bot` - Get infos about the Bot.",
+                "botinfo": "Bot Info",
+                "created": "Created",
+                "createddate": "Core created on April the 5th of 2020.",
+                "release": "Release",
+                "version": "Version",
+                "prefix": "Prefix",
+                "id": "ID"
+            },
+            "ping": {
+                "pong": "Pong!",
+                "fuckoff": "F*ck off! i'm bussy! -.-#",
+                "huh": "Huh? What do you want?",
+                "yes": "Yes?",
+                "what": "What.",
+                "no": "No.",
+                "bussy": "Sorry am bussy right now.",
+                "nope": "Nope",
+                "yeano": "Yeaaa... No.",
+                "cantmuteyou": "You be lucky i can't mute you."
+            },
+            "reload": {
+                "nocmd": "There is no command with this name",
+                "reloaded": "Command `$s` was reloaded!",
+                "reloaderror": "There was an error while reloading the command `$s`:\n`$s`"
+            },
+            "restart": {
+                "manualy": "Please stop and start the bot manualy."
+            },
+            "sleep": {
+                "stopping": "Going to sleep.",
+                "pm2": "On PM2 and like wise mide register this as an crash and restart the bot."
+            },
+            "test": {
+                "executed": "Test Executed!"
+            }
+        },
+        "dev":{
+            "deploy":{
+                "globaladd": "Successfully reloaded $s application (/) commands.",
+                "globalremove": "Successfully deleted all application (/) commands.",
+                "localadd": "Successfully reloaded $s guild (/) commands.",
+                "localremove": "Successfully deleted all guild (/) commands."
+            },
+            "prune": {
+                "guilds": "$s Guilds have been pruned from the Database."
+            }
+        }
+    },
+    "modules": {
+        "logs": {
+            "all": {
+                "before": "Before",
+                "after": "After",
+                "old": "Old",
+                "new": "New",
+                "create": "Created",
+                "edit": "Edited",
+                "delete": "Deleted",
+                "none": "None",
+                "name": "Name",
+                "anon": "@Anon (ID: Unknown)",
+                "memberid": "MemberID",
+                "botid": "BotID",
+                "removed": "Removed",
+                "description": "Description",
+                "color": "Color",
+                "syschannalflag": "Sys Channel Flags",
+                "accountage": "Account age",
+                "tag": "Tag"
+            },
+            "channel": {
+                "createchannel": "Created Channel",
+                "createthread": "Created Thread",
+                "deletechannel": "Deleted Channel",
+                "deletethread": "Deleted Thread",
+                "editchannel": "Edited Channel $s",
+                "editthread": "Edited Thread $s",
+                "name": "Name",
+                "topic": "Topic",
+                "type": "Type",
+                "slowmode": "Slowmode",
+                "activethreads": "Archive Threads",
+                "editpermoverwrite": "Edited Permission Overwrites in $s",
+                "message": "Message",
+                "pin": "Pinned [Message](https://discord.com/channels/$s/$s/$s)\n by $s in <#$s>",
+                "unpin": "unpinned [Message](https://discord.com/channels/$s/$s/$s)\n by $s in <#$s>",
+                "nsfw": "NSFW",
+                "bitrate": "Bitrate",
+                "userlimit": "User Limit",
+                "permoverwrite": "Permission Overwrites: Yes",
+                "rtcregion": "RTC Region",
+                "videoquality": "Video Quality",
+                "threadslowmode": "Thread Slowmode",
+                "tags": "Tags",
+                "reactionemoji": "Reaction Emoji",
+                "archiveduration": "Archive Duration",
+                "sorted": "Sort Order",
+                "forumlayout": "Forum Layout",
+                "reason": "Reason",
+                "flags": "Flags",
+                "archived": "Archived",
+                "locked": "Locked",
+                "resettodefault": "Resetted to Default:"
+            },
+            "event": {
+                "isnotinterested": "$s is **not interested** anymore in Event `$s`",
+                "isinterested": "$s is **interested** in Event `$s`",
+                "scheduled": "Scheduled",
+                "started": "Started",
+                "ended": "Ended",
+                "canceled": "Canceled",
+                "startus": "**Status:** $s\n",
+                "coverimage": "**Cover Image:** The $s Cover Image.\n",
+                "edit": "Edited Event `$s`",
+                "external": "External Event.",
+                "cancel": "Canceled Event `$s`",
+                "hoste": "Up to the Hoste.",
+                "create": "Created Event `$s`",
+                "title": "Title:",
+                "start": "Start:",
+                "end": "End",
+                "location": "Location:"
+            },
+            "expression": {
+                "editemoji": "Edited Name of Emoji $s",
+                "editanimatedemoji": "Edited Name of Animated Emoji $s",
+                "deleteemoji": "Deleted Emoji `:$s:`",
+                "createemoji": "Created Emoji $s",
+                "editsticker": "Edited Name of Sticker $s",
+                "editanimatedsticker": "Edited Name of Animated Sticker $s",
+                "deletesticker": "Deleted Sticker `:$s:`",
+                "createsticker": "Created Sticker $s"
+            },
+            "member": {
+                "addnickto": "Added Nickname `$s` to $s",
+                "removenickfrom": "Removed Nickname `$s` from $s",
+                "editnickof": "Edited Nickname of $s",
+                "addroleto": "Added Role $s to $s",
+                "removerolefrom": "Removed Role $s from $s",
+                "added": "Added",
+                "integrationid": "Integration (Unknown)",
+                "lefted": "<@$s> Left the server",
+                "kicked": "Kicked $s\n**Reason:** $s",
+                "inviteused": "Invite used",
+                "botadded": "Bot $s was Added to the server by $s",
+                "Joined": "<@$s> Joined the server",
+                "unban": "Unbanned $s\n",
+                "ban": "Banned <@$s> (ID: $s)\n**Reason:** $s"
+            },
+            "message": {
+                "delete": "Message from <@$s> deleted in <#$s>\nIt was sent on <t:$s:f>",
+                "deletebulk": "Bulk Deleted $s Messages in <#$s>",
+                "deleteuncached": "Uncached Message in <#$s> deleted \nIt was sent on <t:$s:f>",
+                "edit": "**Edited:** Their [Message](https://discord.com/channels/$s/$s/$s 'The Message $s Edited.')\n**Channel:** $s",
+                "uncached": "*Uncached*",
+                "content": "Content",
+                "fields": "***Fields:*** One or more.",
+                "time": "Time:",
+                "embed": "Embed:"
+            },
+            "misc": {
+                "unknownauditlog": "Recived Unknown AuditLog Entry",
+                "onboarding": {
+                    "onboardingupdate": "Changed Settings of Onboarding",
+                    "defaultchannels": "**Default Channel IDs:** Changed.\n",
+                    "id": "**ID:** $s\n",
+                    "title": "**Title:** $s\n",
+                    "options": "**Options:** Changed.\n",
+                    "singleselect": "**Single Select:** $s\n",
+                    "required": "**Required:** $s\n",
+                    "inonboarding": "**In Onboarding:** $s\n",
+                    "type": "**Type:** $s\n",
+                    "prompts": "**Prompts:** Changed.\n",
+                    "guildid": "**Guild ID:** $s.\n",
+                    "welcomemsg": "**Welcome Message:** $s\n",
+                    "newmemberactions": "**New Member Actions:** Changed.\n",
+                    "resourcechannel": "**Resource Channels:** Changed.\n",
+                    "belowrequirements": "**Below Requirements:** $s\n",
+                    "enabled": "**Enabled:** $s\n"
+                }
+            },
+            "role": {
+                "create": "Created Role $s (ID: $s)",
+                "createpreset": "Created Role $s (ID: $s) with presets",
+                "delete": "Deleted Role `$s` (ID: $s)",
+                "edit": "Edited Role $s",
+                "mentionable": "**Mentionable:** $s\n",
+                "display": "**Display:** $s\n",
+                "color": "**Color:** `#$s` -> `#$s`\n",
+                "name": "**Name:** `$s` -> `$s`\n",
+                "revoked": "Revoked:",
+                "granted": "Granted:"
+            },
+            "server": {
+                "invitecode": "**$s:** Invite\n**Code** https://discord.gg/$s\n**Channel:** $s",
+                "language": "Language:",
+                "syschannel": "Sys Channel:",
+                "enabled": "Enabled",
+                "disabled": "Disabled",
+                "premiumbar": "Premium Progress Bar:",
+                "allmsg": "All Messages",
+                "onlymention": "Only @mentions",
+                "defaultmsgnoti": "Default Message Notification",
+                "afkchannel": "AFK Channel",
+                "changes": "Changes",
+                "edited": "Edited",
+                "interactionced": "$s Integration `$s`",
+                "acpcreate": "Command Permission Overwrite Created for <$s:$s> of <@$s>",
+                "acpdelete": "Command Permission Overwrite Deleted for <$s:$s> of <@$s>",
+                "acpedit": "Command Permission Overwrite Edited for <$s:$s> of <@$s>"
+            },
+            "voice": {
+                "join": "$s Joined $s\nTime: $s",
+                "leave": "$s Left $s\nTime: $s",
+                "switch": "$s Switched from $s to $s\nTime: $s",
+                "requesttospeak": "$s requested to speak in $s\nTime: $s",
+                "screensharing": "$s started screen sharing in $s\nTime: $s",
+                "noscreensharing": "$s stopped screen sharing in $s\nTime: $s",
+                "webcam": "$s started they Webcam in $s\nTime: $s",
+                "nowebcam": "$s stopped they Webcam in $s\nTime: $s",
+                "selfmute": "$s muted them self in $s\ntime: $s",
+                "noselfmute": "$s unmuted them self in $s\nTime: $s",
+                "selfdeaf": "$s deafend them self in $s\nTime: $s",
+                "noselfdeaf": "$s undeafend them self in $s\nTime: $s",
+                "servermute": "$s got muted in $s\nTime: $s",
+                "noservermute": "$s got unmuted in $s\nTime: $s",
+                "serverdeaf": "$s got deafend in $s\nTime: $s",
+                "noserverdeaf": "$s got undeafend in $s\nTime: $s",
+                "stageupdate": "Changed Stage Event topic in <#$s>.\nTime: <t:$s:f>",
+                "stageend": "Ended Stage Event in <#${target.channelId}>.\nTime: <t:${timestamp}:f>",
+                "stagestart": "Started Stage Event in <#${target.channelId}>.\nTime: <t:${timestamp}:f>",
+                "privacylvl": "Privacy Level:",
+                "discoverable": "Discoverable Disabled:",
+                "eventid": "Event ID:"
+            }
+        },
+        "moderation": {
+            "all": {
+                "automod": "$s AutoModeration ($s)"
+            },
+            "captcha": {
+                "banonfail": "Ban on Captcha failure",
+                "kickonfailed": "Kick on Captcha failure"
+            },
+            "nospam": {
+                "": ""
+            },
+            "accountage": {
+                "bantoyoung": "Ban to Young Account's",
+                "kicktoyoung": "Kick to Young Account's"
+            }
+        },
+        "notifyer": {
+            "all": {
+                "null": "null"
+            },
+            "twitch": {
+                "title": "Title",
+                "game": "Game",
+                "status": "Status",
+                "uptime": "Uptime",
+                "viewercount": "Live with $s viewers",
+                "wentlive": "$s went live on Twitch!",
+                "islivetitle":"$s is live on Twitch!",
+                "notlivetitle": "$s was live on Twitch.",
+                "notlivedesc": "The stream has now ended.",
+                "streamended": "Stream has ended"
+            },
+            "youtube": {
+                "": ""
+            },
+            "tiktok": {
+                "": ""
+            }
+        }
+    }
+}
+

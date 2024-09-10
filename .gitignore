@@ -1,0 +1,46 @@
+# Compressed Packages #
+#######################
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.gz
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+*.sql
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Environment Variable Files #
+##############################
+.env*
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+.env.secret
+.env.config
+
+# Directorys #
+##############
+node_modules/
+backup/
+data/sqlite/
+miniDB/
+
+# Files #
+#########
+pnpm-lock.yaml*
+.eslintrc.json*
+twitchOAuth.json*

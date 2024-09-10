@@ -1,0 +1,46 @@
+{
+  "name": "clannotifyer",
+  "version": "5.2.0",
+  "description": "Discord ClanNotifyer",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "lint": "eslint main.js src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Tamani Wolf - Eternal Clan",
+    "url": "https://github.com/TamaniWolf/"
+  },
+  "contributors": [
+    {"name": "Norsense","url": "https://github.com/Norsense"}
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TamaniWolf/ClanNotifyer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TamaniWolf/ClanNotifyer/issues"
+  },
+  "engines": {
+    "node": "18.18.2"
+  },
+  "packageManager": "pnpm@8.6.6",
+  "homepage": "https://github.com/TamaniWolf/ClanNotifyer#readme",
+  "dependencies": {
+    "axios": "^1.2.1",
+    "better-sqlite3": "^9.6.0",
+    "discord.js": "^14.15.2",
+    "dotenv": "^16.4.5",
+    "glob": "^10.3.12",
+    "humanize-duration": "^3.27.3",
+    "luxon": "^3.4.4",
+    "mathjs": "^12.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.32",
+    "eslint": "^9.2.0",
+    "nodemon": "^3.1.0"
+  }
+}
