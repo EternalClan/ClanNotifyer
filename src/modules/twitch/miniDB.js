@@ -1,3 +1,5 @@
+/* eslint-disable n/no-path-concat */
+/* eslint-disable space-before-function-paren */
 /* eslint-disable no-console */
 require("dotenv").config();
 const fs = require("fs");

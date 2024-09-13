@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 const { PermissionsBitField } = require("discord.js");
+// eslint-disable-next-line no-unused-expressions
 require("dotenv").config;
 
 class PermissionConvert {
@@ -71,7 +72,7 @@ class PermissionConvert {
 				}
 				const permNew = permBitfield;
 				resolve(permNew || "None");
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});
@@ -143,7 +144,7 @@ class PermissionConvert {
 				}
 				const permNew = permBitfield;
 				resolve(permNew || "None");
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});
@@ -164,7 +165,7 @@ class PermissionConvert {
 
 				const perms = { granted: permNew.bitfield, revoked: permOld.bitfield };
 				resolve(perms || "None");
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});

@@ -1,23 +1,26 @@
 // Require SQLite and Databases
 const SQLite = require("better-sqlite3");
-const sql_Config = new SQLite("./data/sqlite/config.sqlite");
-const sql_Toggle = new SQLite("./data/sqlite/toggle.sqlite");
-const sql_ChannelRole = new SQLite("./data/sqlite/channelRole.sqlite");
-const sql_Notifyer = new SQLite("./data/sqlite/notifyer.sqlite");
+const sqlConfig = new SQLite("./data/sqlite/config.sqlite");
+const sqlToggle = new SQLite("./data/sqlite/toggle.sqlite");
+const sqlChannelRole = new SQLite("./data/sqlite/channelRole.sqlite");
+const sqlNotifyer = new SQLite("./data/sqlite/notifyer.sqlite");
 
 class SQL {
 	// Config
 	static config() {
-		return sql_Config;
+		return sqlConfig;
 	}
+
 	static toggle() {
-		return sql_Toggle;
+		return sqlToggle;
 	}
+
 	static channelRole() {
-		return sql_ChannelRole;
+		return sqlChannelRole;
 	}
+
 	static notifyer() {
-		return sql_Notifyer;
+		return sqlNotifyer;
 	}
 }
 

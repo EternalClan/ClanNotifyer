@@ -15,8 +15,8 @@ module.exports = {
 		.setDMPermission(false)
 		.setDefaultMemberPermissions(PermissionsBitField.Flags.ViewAuditLog),
 	async execute(interaction) {
-		if (interaction == null || interaction.channel.id == null
-		|| interaction.guild.id == null) return console.error(`[${DateTime.utc().toFormat(timeFormat)}][ClanBot] Interaction of Command 'test' returned 'null / undefined'.`);
+		if (interaction == null || interaction.channel.id == null ||
+		interaction.guild.id == null) return console.error(`[${DateTime.utc().toFormat(timeFormat)}][ClanBot] Interaction of Command 'test' returned 'null / undefined'.`);
 
 		const { Get } = require("../../../tools/functions/sql/db");
 		const getGuildID = `${interaction.guild.id}`;

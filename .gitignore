@@ -41,6 +41,5 @@ miniDB/
 
 # Files #
 #########
-pnpm-lock.yaml*
 .eslintrc.json*
 twitchOAuth.json*

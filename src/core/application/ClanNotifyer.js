@@ -45,4 +45,4 @@ client.commands = new Collection();
 // Login
 client.login(process.env.TOKEN);
 
-// //--------END--------//
+// --------END-------- //

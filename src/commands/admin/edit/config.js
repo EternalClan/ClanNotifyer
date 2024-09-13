@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 const { PermissionsBitField, EmbedBuilder, SlashCommandBuilder } = require("discord.js");
 const { DateTime } = require("luxon");
@@ -13,16 +14,16 @@ module.exports = {
 		.setDescription("editing config")
 		.setDMPermission(false)
 		.setDefaultMemberPermissions(
-			PermissionsBitField.Flags.ViewAuditLog
-            | PermissionsBitField.Flags.KickMembers
-            | PermissionsBitField.Flags.ManageChannels
-            | PermissionsBitField.Flags.ManageGuildExpressions
-            | PermissionsBitField.Flags.ManageGuild
-            | PermissionsBitField.Flags.ManageMessages
-            | PermissionsBitField.Flags.ManageRoles
-            | PermissionsBitField.Flags.ModerateMembers
-            | PermissionsBitField.Flags.ManageThreads
-            | PermissionsBitField.Flags.ManageWebhooks
+			PermissionsBitField.Flags.ViewAuditLog |
+            PermissionsBitField.Flags.KickMembers |
+            PermissionsBitField.Flags.ManageChannels |
+            PermissionsBitField.Flags.ManageGuildExpressions |
+            PermissionsBitField.Flags.ManageGuild |
+            PermissionsBitField.Flags.ManageMessages |
+            PermissionsBitField.Flags.ManageRoles |
+            PermissionsBitField.Flags.ModerateMembers |
+            PermissionsBitField.Flags.ManageThreads |
+            PermissionsBitField.Flags.ManageWebhooks
 		)
 		.addSubcommand(subcommand =>
 			subcommand
@@ -53,7 +54,7 @@ module.exports = {
 									{ name: "Reload", value: "admin1-Reload" },
 									{ name: "Restart", value: "admin1-Restart" },
 									{ name: "Sleep", value: "admin1-Sleep" },
-									{ name: "Notifyer", value: "admin1-Notifyer"}
+									{ name: "Notifyer", value: "admin1-Notifyer" }
 								)
 						)
 						.addStringOption(option =>
@@ -95,8 +96,8 @@ module.exports = {
 				)
 		),
 	async execute(interaction) {
-		if (interaction == null
-		|| interaction.channel.id == null) return console.error(`[${DateTime.utc().toFormat(timeFormat)}][Bot] Interaction of Command 'config' returned 'null / undefined'.`);
+		if (interaction == null ||
+		interaction.channel.id == null) return console.error(`[${DateTime.utc().toFormat(timeFormat)}][Bot] Interaction of Command 'config' returned 'null / undefined'.`);
 
 		const { Get, Set } = require("../../../tools/functions/sql/db.js");
 		const getGuildID = `${interaction.guild.id}`;
@@ -148,14 +149,14 @@ module.exports = {
 			const dataNotifyer = { ToggleID: `${getBotConfigID}`, GuildID: `${getGuildID}`, ShardID: `${getShardID}`, Twitch: "false", YouTube: "false", TikTok: "false" };
 			toggleConfig(getBotConfigID, "notifyer", stringGetNotifyer, stringGetToggle, dataNotifyer);
 		}
-		
+
 		/**
 		 * @param dataId - The Database table ID (ToggleID)
 		 * @param table - The Table to be used
 		 * @param configSet - The Config option to be toggled
 		 * @param toggle - The Toggle
 		 * @param nullData - The DataSet to be used if database is null
-		 * @returns 
+		 * @returns
 		 */
 		async function toggleConfig(dataId, table, configSet, toggle, nullData) {
 			let dataToggle = Get.toggleByID(table, dataId);

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 const { PermissionsBitField, EmbedBuilder, SlashCommandBuilder } = require("discord.js");
 const { DateTime } = require("luxon");
@@ -13,20 +14,20 @@ module.exports = {
 		.setDescription("admin help")
 		.setDMPermission(false)
 		.setDefaultMemberPermissions(
-			PermissionsBitField.Flags.ViewAuditLog
-            | PermissionsBitField.Flags.KickMembers
-            | PermissionsBitField.Flags.ManageChannels
-            | PermissionsBitField.Flags.ManageGuildExpressions
-            | PermissionsBitField.Flags.ManageGuild
-            | PermissionsBitField.Flags.ManageMessages
-            | PermissionsBitField.Flags.ManageRoles
-            | PermissionsBitField.Flags.ModerateMembers
-            | PermissionsBitField.Flags.ManageThreads
-            | PermissionsBitField.Flags.ManageWebhooks
+			PermissionsBitField.Flags.ViewAuditLog |
+            PermissionsBitField.Flags.KickMembers |
+            PermissionsBitField.Flags.ManageChannels |
+            PermissionsBitField.Flags.ManageGuildExpressions |
+            PermissionsBitField.Flags.ManageGuild |
+            PermissionsBitField.Flags.ManageMessages |
+            PermissionsBitField.Flags.ManageRoles |
+            PermissionsBitField.Flags.ModerateMembers |
+            PermissionsBitField.Flags.ManageThreads |
+            PermissionsBitField.Flags.ManageWebhooks
 		),
 	async execute(interaction) {
-		if (interaction == null || interaction.channel.id == null
-		|| interaction.guild.id == null) return console.log(`[${DateTime.utc().toFormat(timeFormat)}][ClanBot] Interaction of Command 'adminhelp' returned 'null / undefined'.`);
+		if (interaction == null || interaction.channel.id == null ||
+		interaction.guild.id == null) return console.log(`[${DateTime.utc().toFormat(timeFormat)}][ClanBot] Interaction of Command 'adminhelp' returned 'null / undefined'.`);
 
 		const { Get } = require("../../../tools/functions/sql/db.js");
 		const getGuildID = `${interaction.guild.id}`;
@@ -51,10 +52,10 @@ module.exports = {
 		if (!dataChannelAdmin || getChannelID !== dataChannelAdmin.ChannelID) return await interaction.reply({ content: langError.channel.wrong, ephemeral: true });
 
 		const dataNew = interaction.client.commands.filter(f => f.admin === "true");
-		const dataPcName = dataNew.map(cmd =>{
+		const dataPcName = dataNew.map(cmd => {
 			return `${cmd.data.name}`;
 		});
-		const dataPcDescription = dataNew.map(cmd =>{
+		const dataPcDescription = dataNew.map(cmd => {
 			return `${cmd.data.description}`;
 		});
 		const stringPcName = dataPcName.toString();

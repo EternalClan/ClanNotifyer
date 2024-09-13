@@ -18,7 +18,7 @@ const lang = require(`../../../data/lang/${dataLang.Lang}/${dataLang.Lang}.json`
 const langTwitch = lang.modules.notifyer.twitch;
 
 class TwitchEmbed {
-	static create(streamData) {
+	static create (streamData) {
 		const isLive = streamData.type === "live";
 		const allowBoxArt = "true";
 
@@ -70,12 +70,16 @@ class TwitchEmbed {
 			const iso = DateTime.fromISO(streamData.started_at);
 			const startedAt = iso.setZone("utc");
 
-			msgEmbed.addFields([{ name: langTwitch.uptime, value: humanizeDuration(now - startedAt, {
-				delimiter: ", ",
-				largest: 2,
-				round: true,
-				units: ["y", "mo", "w", "d", "h", "m"]
-			}), inline: true }]);
+			msgEmbed.addFields([{
+				name: langTwitch.uptime,
+				value: humanizeDuration(now - startedAt, {
+					delimiter: ", ",
+					largest: 2,
+					round: true,
+					units: ["y", "mo", "w", "d", "h", "m"]
+				}),
+				inline: true
+			}]);
 		}
 
 		return msgEmbed;

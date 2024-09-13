@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 const { PermissionsBitField, EmbedBuilder, SlashCommandBuilder } = require("discord.js");
 const { DateTime } = require("luxon");
@@ -13,16 +14,16 @@ module.exports = {
 		.setDescription("editing stuff")
 		.setDMPermission(false)
 		.setDefaultMemberPermissions(
-			PermissionsBitField.Flags.ViewAuditLog
-            | PermissionsBitField.Flags.KickMembers
-            | PermissionsBitField.Flags.ManageChannels
-            | PermissionsBitField.Flags.ManageGuildExpressions
-            | PermissionsBitField.Flags.ManageGuild
-            | PermissionsBitField.Flags.ManageMessages
-            | PermissionsBitField.Flags.ManageRoles
-            | PermissionsBitField.Flags.ModerateMembers
-            | PermissionsBitField.Flags.ManageThreads
-            | PermissionsBitField.Flags.ManageWebhooks
+			PermissionsBitField.Flags.ViewAuditLog |
+            PermissionsBitField.Flags.KickMembers |
+            PermissionsBitField.Flags.ManageChannels |
+            PermissionsBitField.Flags.ManageGuildExpressions |
+            PermissionsBitField.Flags.ManageGuild |
+            PermissionsBitField.Flags.ManageMessages |
+            PermissionsBitField.Flags.ManageRoles |
+            PermissionsBitField.Flags.ModerateMembers |
+            PermissionsBitField.Flags.ManageThreads |
+            PermissionsBitField.Flags.ManageWebhooks
 		)
 		.addSubcommand(subcommand =>
 			subcommand
@@ -94,8 +95,8 @@ module.exports = {
 				)
 		),
 	async execute(interaction) {
-		if (interaction == null
-		|| interaction.channel.id == null) return console.error(`[${DateTime.utc().toFormat(timeFormat)}][Bot] Interaction of Command 'roles' returned 'null / undefined'.`);
+		if (interaction == null ||
+		interaction.channel.id == null) return console.error(`[${DateTime.utc().toFormat(timeFormat)}][Bot] Interaction of Command 'roles' returned 'null / undefined'.`);
 
 		const { Get, Set, Del } = require("../../../tools/functions/sql/db.js");
 		const getGuildID = `${interaction.guild.id}`;
@@ -126,27 +127,27 @@ module.exports = {
 			.setColor("DarkGreen")
 			.setTitle(`${langRoles.title}`);
 		if (interaction.options.getSubcommand() === "help") {
-			configembed.addFields(
+			roleembed.addFields(
 				{ name: `${langRoles.helpname1}`, value: `${langRoles.helpvalue2}`, inline: false }
 			);
-			await interaction.reply({ embeds: [configembed] });
+			await interaction.reply({ embeds: [roleembed] });
 		}
 		if (interaction.options.getSubcommand() === "list") {
 			const tables = ["role_admin", "role_user", "role_nsfw"];
-			tables.forEach(function (table) {
+			tables.forEach(function(table) {
 				let dataRoleList = Get.roleAll(table, getGuildID);
 				if (dataRoleList == null) dataRoleList = { RoleID: null };
-				const arrayOfStrings = dataRoleList.map(function (obj) {
+				const arrayOfStrings = dataRoleList.map(function(obj) {
 					return obj.RoleID;
 				});
 				let stringRole = `<@&${arrayOfStrings.toString().replace(/[,]/gi, ">\n<@&")}>`;
 				const roleRegrex = /^([a-z<@&>]{4,})$/;
 				if (stringRole == null || roleRegrex.test(stringRole)) stringRole = `${langRoles.nodata}`;
 				roleembed.addFields([
-					{ name: `${langRoles[table.replace("role_", "")]}`, value: `${stringRole}`, inline: true },
+					{ name: `${langRoles[table.replace("role_", "")]}`, value: `${stringRole}`, inline: true }
 				]);
 			});
-			roleembed.setDescription("<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>")
+			roleembed.setDescription("<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>");
 			await interaction.reply({ embeds: [roleembed] });
 		}
 		// Add
@@ -166,6 +167,7 @@ module.exports = {
 			 * @param type - The Role Type/Group
 			 * @param roleId - The Id of this role
 			 */
+			// eslint-disable-next-line no-inner-declarations
 			async function setRole(dataId, type, roleId) {
 				let dataAddRole = Get.roleByID(`role_${type}`, dataId);
 				if (dataAddRole != null) {
@@ -179,7 +181,7 @@ module.exports = {
 					roleembed.setDescription(LanguageConvert.lang(langRoles.set, stringGetRole, langRoles[type]));
 					await interaction.reply({ embeds: [roleembed] });
 				}
-			};
+			}
 
 			// Check if argument is Admin.
 			const stringChoicesValueSet = interaction.options.getString("setoptions");
@@ -213,11 +215,12 @@ module.exports = {
 				roleembed.setDescription(`${langRoles.noroleserver}`);
 				await interaction.reply({ embeds: [roleembed] });
 			}
-			
+
 			/**
 			 * @param dataId - The Database table id of this entry
 			 * @param type - The Role Type/Group
 			 */
+			// eslint-disable-next-line no-inner-declarations
 			async function removeRole(dataId, type) {
 				const dataRemoveRole = Get.roleByID(`role_${type}`, dataId);
 				if (dataRemoveRole == null) {
@@ -230,7 +233,7 @@ module.exports = {
 					roleembed.setDescription(LanguageConvert.lang(langRoles.remove, stringGetRole, langRoles[type]));
 					await interaction.reply({ embeds: [roleembed] });
 				}
-			};
+			}
 
 			// Check if argument is Admin.
 			const stringChoicesValueRemove = interaction.options.getString("removeoptions");
@@ -255,15 +258,18 @@ module.exports = {
 
 		if (interaction.options.getSubcommand() === "prune") {
 			let stringChoicesValue = interaction.options.getString("validateoptions");
-			
+
 			let countRemove = 0;
+			// eslint-disable-next-line no-unused-vars
 			let countKeep = 0;
+			// eslint-disable-next-line no-unused-vars
 			let countTotal = 0;
 
 			/**
 			 * @param guildId - The ID of the guild
 			 * @param type - The Role Type/Group
 			 */
+			// eslint-disable-next-line no-inner-declarations
 			async function roleValidate(guildId, type) {
 				const dataValidateChannel = Get.roleAll(`role_${type}`, guildId);
 				if (dataValidateChannel == null) {
@@ -276,8 +282,8 @@ module.exports = {
 						const channeId = data.ChannelID;
 						const channel = await interaction.guild.channels.fetch(channeId);
 						if (!channel) {
-							const removeChannel = `${getBotConfigID}-${channeId}`
-							Del.roleByID(`role_${type}`, removeChannel)
+							const removeChannel = `${getBotConfigID}-${channeId}`;
+							Del.roleByID(`role_${type}`, removeChannel);
 							countRemove++;
 							countTotal++;
 						}
@@ -285,13 +291,13 @@ module.exports = {
 							countKeep++;
 							countTotal++;
 						}
-					})
+					});
 					roleembed.setDescription(LanguageConvert.lang(langRoles.prune, countRemove));
 				}
-			};
-			
+			}
+
 			if (!stringChoicesValue) {
-				stringChoicesValue = ["admin","user","nsfw"];
+				stringChoicesValue = ["admin", "user", "nsfw"];
 				stringChoicesValue.forEach(type => {
 					roleValidate(getGuildID, type);
 				});

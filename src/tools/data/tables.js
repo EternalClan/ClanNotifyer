@@ -24,7 +24,7 @@ module.exports = () => {
 	// Get Guilds data and pass it on.
 	// eslint-disable-next-line prefer-const, no-undef
 	const guildsCache = globalclient.guilds.cache.size;
-	if (guildsCache != 0) {
+	if (guildsCache !== 0) {
 		// eslint-disable-next-line no-undef
 		globalclient.guilds.cache.each(guild => {
 			const { SQLiteTableData } = require("./startData.js");

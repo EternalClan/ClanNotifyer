@@ -4,14 +4,13 @@ const { existsSync, mkdirSync } = require("node:fs");
 require("dotenv").config();
 
 class Application {
-
 	static stop(signal) {
-		const date = new Date;
+		const date = new Date();
 		if (signal === "SIGINT") { console.log(`[${date.toUTCString()}]\n > ▪ ▪ ▪  SIGINT Exit 0  ▪ ▪ ▪ < `); process.exit(0); }
 		if (signal === "SIGTERM") { console.log(`[${date.toUTCString()}]\n > ▪ ▪ ▪  SIGTERM Exit 0  ▪ ▪ ▪ < `); process.exit(0); }
 		if (signal === "exit") { console.log(`[${date.toUTCString()}]\n > ▪ ▪ ▪  exit Exit 0  ▪ ▪ ▪ < `); process.exit(0); }
-		// eslint-disable-next-line no-undef
-		if (signal === "STOP") { globalclient.destroy().then(console.log(`[${date.toUTCString()}]\n > ▪ ▪ ▪  Shutdown  ▪ ▪ ▪ < `)); setTimeout(() => { process.exit(0) }, 5000);}
+		// eslint-disable-next-line no-undef, max-statements-per-line
+		if (signal === "STOP") { globalclient.destroy().then(console.log(`[${date.toUTCString()}]\n > ▪ ▪ ▪  Shutdown  ▪ ▪ ▪ < `)); setTimeout(() => { process.exit(0); }, 5000); }
 	}
 
 	static init() {

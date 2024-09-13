@@ -19,9 +19,9 @@ class TwitchOAuth {
 				client_secret: process.env.TWITCH_CLIENT_SECRET,
 				grant_type: "client_credentials"
 			}
-		}).then(function(res) {
+		}).then(function (res) {
 			const data = res.data;
-			/* minutes: 1*/
+			/* minutes: 1 */
 			const timethen = DateTime.utc().plus({ days: 10 }).toISO();
 			if (!fs.existsSync("./data/sqlite/twitchOAuth.json")) {
 				const requestjsonread = {
@@ -29,7 +29,7 @@ class TwitchOAuth {
 					twitch_oauth_cooldown: "0"
 				};
 				const datajsonrequest = JSON.stringify(requestjsonread, null, 2);
-				fs.writeFileSync("./data/sqlite/twitchOAuth.json", datajsonrequest, function(err) {
+				fs.writeFileSync("./data/sqlite/twitchOAuth.json", datajsonrequest, function (err) {
 					if (err) throw err;
 					console.log(`[${DateTime.utc().toFormat(timeFormat)}][TwitchOAuth] ${err}`);
 				});
@@ -40,7 +40,7 @@ class TwitchOAuth {
 			requestjsonread.twitch_oauth_token = data.access_token;
 			requestjsonread.twitch_oauth_cooldown = timethen;
 			const datajsonrequest = JSON.stringify(requestjsonread, null, 2);
-			fs.writeFileSync("./data/sqlite/twitchOAuth.json", datajsonrequest, function(err) {
+			fs.writeFileSync("./data/sqlite/twitchOAuth.json", datajsonrequest, function (err) {
 				if (err) throw err;
 				console.log(`[${DateTime.utc().toFormat(timeFormat)}][TwitchOAuth] ${err}`);
 			});
@@ -50,7 +50,7 @@ class TwitchOAuth {
 			console.log(`[${DateTime.utc().toFormat(timeFormat)}][TwitchOAuth] New "client_credentials" Token for Twitch created, next request on '${timethen}'.`);
 			const twitchRequestReset = true;
 			global.globaltwitchready = twitchRequestReset;
-		}).catch(function(err) {
+		}).catch(function (err) {
 			console.error(`[${DateTime.utc().toFormat(timeFormat)}][TwitchOAuth] ${err.stack}`);
 		});
 	}

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 const { PermissionsBitField, EmbedBuilder, SlashCommandBuilder } = require("discord.js");
 const { DateTime } = require("luxon");
@@ -15,16 +16,16 @@ module.exports = {
 		.setDescription("editing lang")
 		.setDMPermission(false)
 		.setDefaultMemberPermissions(
-			PermissionsBitField.Flags.ViewAuditLog
-            | PermissionsBitField.Flags.KickMembers
-            | PermissionsBitField.Flags.ManageChannels
-            | PermissionsBitField.Flags.ManageGuildExpressions
-            | PermissionsBitField.Flags.ManageGuild
-            | PermissionsBitField.Flags.ManageMessages
-            | PermissionsBitField.Flags.ManageRoles
-            | PermissionsBitField.Flags.ModerateMembers
-            | PermissionsBitField.Flags.ManageThreads
-            | PermissionsBitField.Flags.ManageWebhooks
+			PermissionsBitField.Flags.ViewAuditLog |
+            PermissionsBitField.Flags.KickMembers |
+            PermissionsBitField.Flags.ManageChannels |
+            PermissionsBitField.Flags.ManageGuildExpressions |
+            PermissionsBitField.Flags.ManageGuild |
+            PermissionsBitField.Flags.ManageMessages |
+            PermissionsBitField.Flags.ManageRoles |
+            PermissionsBitField.Flags.ModerateMembers |
+            PermissionsBitField.Flags.ManageThreads |
+            PermissionsBitField.Flags.ManageWebhooks
 		)
 		.addSubcommand(subcommand =>
 			subcommand
@@ -52,8 +53,8 @@ module.exports = {
 		const focusedOption = interaction.options.getFocused(true);
 		let choices = [];
 
-		if (focusedOption.name === 'code') {
-			let cmds = [];
+		if (focusedOption.name === "code") {
+			const cmds = [];
 			fs.readdirSync("./data/lang/").filter(file => file).forEach(patch => {
 				cmds.push(patch);
 			});
@@ -64,12 +65,12 @@ module.exports = {
 
 		const filtered = choices.filter(choice => choice.startsWith(focusedOption.value));
 		await interaction.respond(
-			filtered.map(choice => ({ name: choice, value: choice })),
+			filtered.map(choice => ({ name: choice, value: choice }))
 		);
 	},
 	async execute(interaction) {
-		if (interaction == null
-		|| interaction.channel.id == null) return console.error(`[${DateTime.utc().toFormat(timeFormat)}][Bot] Interaction of Command 'lanuage' returned 'null / undefined'.`);
+		if (interaction == null ||
+		interaction.channel.id == null) return console.error(`[${DateTime.utc().toFormat(timeFormat)}][Bot] Interaction of Command 'lanuage' returned 'null / undefined'.`);
 
 		const { Get, Set } = require("../../../tools/functions/sql/db.js");
 		const getGuildID = `${interaction.guild.id}`;
@@ -104,9 +105,9 @@ module.exports = {
 			await interaction.reply({ embeds: [configembed] });
 		}
 		if (interaction.options.getSubcommand() === "list") {
-			const lang_dirs = readdirSync("./data/lang/").filter(dir => dir.includes("_"));
-			let langFiles = { name: "", code: "" };
-			for (const dir of lang_dirs) {
+			const langDirs = readdirSync("./data/lang/").filter(dir => dir.includes("_"));
+			const langFiles = { name: "", code: "" };
+			for (const dir of langDirs) {
 				if (!existsSync(`./data/lang/${dir}/${dir}.json`)) continue;
 				const rawData = readFileSync(`./data/lang/${dir}/${dir}.json`);
 				const langRead = JSON.parse(rawData);

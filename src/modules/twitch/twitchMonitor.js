@@ -51,7 +51,7 @@ class TwitchMonitor {
 			// Enforce minimum poll interval to help avoid rate limits
 			checkIntervalMs = TwitchMonitor.MIN_POLL_INTERVAL_MS;
 		}
-		var refreshInterval = setInterval(() => {
+		const refreshInterval = setInterval(() => {
 			if (dataTwitch.Twitch === "true") {
 				this.refresh("Periodic refresh");
 			}

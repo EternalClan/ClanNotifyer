@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { DateTime } = require("luxon");
 const timeFormat = "yyyy/LL/dd-h:mm:ss.SSS-a";
 require("dotenv").config();
@@ -18,8 +19,8 @@ module.exports = async (message, args) => {
 	if (args[1] === "database") {
 		// eslint-disable-next-line prefer-const, no-undef
 		const guildsCache = globalclient.guilds.cache.size;
-		if (guildsCache != 0) {
-			let databaseGuildIds = [];
+		if (guildsCache !== 0) {
+			const databaseGuildIds = [];
 			let prunedGuilds;
 
 			const sqlString = "SELECT * FROM discord_bot";
@@ -52,6 +53,7 @@ module.exports = async (message, args) => {
 			}
 		}
 
+		// eslint-disable-next-line no-inner-declarations
 		function removeGuilds(guildIds) {
 			guildIds.forEach(guildId => {
 				// CONFIG
@@ -73,6 +75,5 @@ module.exports = async (message, args) => {
 				Del.roleAll("role_user", guildId);
 			});
 		}
-
 	}
 };

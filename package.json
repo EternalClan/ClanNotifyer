@@ -1,11 +1,12 @@
 {
   "name": "clannotifyer",
-  "version": "5.2.0",
+  "version": "5.3.0",
   "description": "Discord ClanNotifyer",
   "main": "main.js",
   "private": true,
   "scripts": {
-    "lint": "eslint main.js src",
+    "lint": "standard",
+    "lint-readme": "standard-markdown",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {
@@ -13,34 +14,43 @@
     "url": "https://github.com/TamaniWolf/"
   },
   "contributors": [
-    {"name": "Norsense","url": "https://github.com/Norsense"}
+    {
+      "name": "Norsense",
+      "url": "https://github.com/Norsense"
+    }
   ],
-  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TamaniWolf/ClanNotifyer.git"
+    "url": "git://github.com/EternalClan/ClanNotifyer.git"
   },
-  "bugs": {
-    "url": "https://github.com/TamaniWolf/ClanNotifyer/issues"
-  },
-  "engines": {
-    "node": "18.18.2"
-  },
-  "packageManager": "pnpm@8.6.6",
-  "homepage": "https://github.com/TamaniWolf/ClanNotifyer#readme",
+  "keywords": [
+    "clannotifyer",
+    "eternalclan",
+    "twitch",
+    "notification",
+    "announcemnets"
+  ],
+  "readmeFilename": "README.md",
+  "license": "MIT",
   "dependencies": {
-    "axios": "^1.2.1",
+    "axios": "^1.7.7",
     "better-sqlite3": "^9.6.0",
-    "discord.js": "^14.15.2",
+    "discord.js": "^14.16.1",
     "dotenv": "^16.4.5",
-    "glob": "^10.3.12",
-    "humanize-duration": "^3.27.3",
-    "luxon": "^3.4.4",
-    "mathjs": "^12.4.2"
+    "glob": "^10.4.5",
+    "humanize-duration": "^3.32.1",
+    "luxon": "^3.5.0",
+    "mathjs": "^12.4.3"
   },
   "devDependencies": {
-    "@types/node": "^18.19.32",
-    "eslint": "^9.2.0",
-    "nodemon": "^3.1.0"
+    "@definitelytyped/dtslint": "^0.0.133",
+    "@types/node": "^18.19.50",
+    "nodemon": "^3.1.4",
+    "standard": "^17.1.0",
+    "standard-markdown": "^7.1.0",
+    "standard-version": "^9.5.0"
+  },
+  "engines": {
+    "node": ">=18.x"
   }
 }

@@ -1,4 +1,5 @@
 const { SystemChannelFlagsBitField, ChannelType, ApplicationCommandPermissionType } = require("discord.js");
+// eslint-disable-next-line no-unused-expressions
 require("dotenv").config;
 
 class MiscConvert {
@@ -22,7 +23,7 @@ class MiscConvert {
 				if (seconds === 21600) rateLimit = "6h";
 				const rateLimitNew = rateLimit;
 				resolve(rateLimitNew || "");
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});
@@ -38,7 +39,7 @@ class MiscConvert {
 				if (seconds === 10080) archiveDuration = "1 Week";
 				const DAD = archiveDuration;
 				resolve(DAD || "");
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});
@@ -67,17 +68,17 @@ class MiscConvert {
 				if (bitfields.has(SystemChannelFlagsBitField.Flags.SuppressRoleSubscriptionPurchaseNotifications) === true) {
 					sysChanFlaBitfield += "Suppress Role Subscription Purchase Notifications\n";
 				}
-				if (bitfields.has(SystemChannelFlagsBitField.Flags.SuppressGuildReminderNotifications) === false
-				&& bitfields.has(SystemChannelFlagsBitField.Flags.SuppressJoinNotificationReplies) === false
-				&& bitfields.has(SystemChannelFlagsBitField.Flags.SuppressJoinNotifications) === false
-				&& bitfields.has(SystemChannelFlagsBitField.Flags.SuppressPremiumSubscriptions) === false
-				&& bitfields.has(SystemChannelFlagsBitField.Flags.SuppressRoleSubscriptionPurchaseNotificationReplies) === false
-				&& bitfields.has(SystemChannelFlagsBitField.Flags.SuppressRoleSubscriptionPurchaseNotifications) === false) {
+				if (bitfields.has(SystemChannelFlagsBitField.Flags.SuppressGuildReminderNotifications) === false &&
+				bitfields.has(SystemChannelFlagsBitField.Flags.SuppressJoinNotificationReplies) === false &&
+				bitfields.has(SystemChannelFlagsBitField.Flags.SuppressJoinNotifications) === false &&
+				bitfields.has(SystemChannelFlagsBitField.Flags.SuppressPremiumSubscriptions) === false &&
+				bitfields.has(SystemChannelFlagsBitField.Flags.SuppressRoleSubscriptionPurchaseNotificationReplies) === false &&
+				bitfields.has(SystemChannelFlagsBitField.Flags.SuppressRoleSubscriptionPurchaseNotifications) === false) {
 					sysChanFlaBitfield += "None";
 				}
 				const sysChanFlaNew = sysChanFlaBitfield;
 				resolve(sysChanFlaNew || "");
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});
@@ -87,22 +88,22 @@ class MiscConvert {
 		return new Promise((resolve, reject) => {
 			try {
 				let chanTypeNumber = "";
-				if (number == ChannelType.GuildText) chanTypeNumber = "Text Channel";
-				if (number == ChannelType.DM) chanTypeNumber = "DM";
-				if (number == ChannelType.GuildVoice) chanTypeNumber = "Voice Channel";
-				if (number == ChannelType.GroupDM) chanTypeNumber = "Group DM";
-				if (number == ChannelType.GuildCategory) chanTypeNumber = "Category";
-				if (number == ChannelType.GuildAnnouncement) chanTypeNumber = "Announcement Channel";
-				if (number == ChannelType.AnnouncementThread) chanTypeNumber = "Announcement Thread";
-				if (number == ChannelType.PublicThread) chanTypeNumber = "Public Thread";
-				if (number == ChannelType.PrivateThread) chanTypeNumber = "Private Thread";
-				if (number == ChannelType.GuildStageVoice) chanTypeNumber = "Stage";
-				if (number == ChannelType.GuildDirectory) chanTypeNumber = "Server Directory";
-				if (number == ChannelType.GuildForum) chanTypeNumber = "Forum";
-				// if (number == ChannelType.GuildMedia) chanTypeNumber = "Media Channel";
+				if (number === ChannelType.GuildText) chanTypeNumber = "Text Channel";
+				if (number === ChannelType.DM) chanTypeNumber = "DM";
+				if (number === ChannelType.GuildVoice) chanTypeNumber = "Voice Channel";
+				if (number === ChannelType.GroupDM) chanTypeNumber = "Group DM";
+				if (number === ChannelType.GuildCategory) chanTypeNumber = "Category";
+				if (number === ChannelType.GuildAnnouncement) chanTypeNumber = "Announcement Channel";
+				if (number === ChannelType.AnnouncementThread) chanTypeNumber = "Announcement Thread";
+				if (number === ChannelType.PublicThread) chanTypeNumber = "Public Thread";
+				if (number === ChannelType.PrivateThread) chanTypeNumber = "Private Thread";
+				if (number === ChannelType.GuildStageVoice) chanTypeNumber = "Stage";
+				if (number === ChannelType.GuildDirectory) chanTypeNumber = "Server Directory";
+				if (number === ChannelType.GuildForum) chanTypeNumber = "Forum";
+				// if (number === ChannelType.GuildMedia) chanTypeNumber = "Media Channel";
 				const sysChanFlaNew = chanTypeNumber;
 				resolve(sysChanFlaNew || "");
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});
@@ -112,12 +113,12 @@ class MiscConvert {
 		return new Promise((resolve, reject) => {
 			try {
 				let response = "";
-				if (number == ApplicationCommandPermissionType.Role) response = "Role";
-				if (number == ApplicationCommandPermissionType.User) response = "User";
-				if (number == ApplicationCommandPermissionType.Channel) response = "Channel";
+				if (number === ApplicationCommandPermissionType.Role) response = "Role";
+				if (number === ApplicationCommandPermissionType.User) response = "User";
+				if (number === ApplicationCommandPermissionType.Channel) response = "Channel";
 				const applicationCommandPermissionType = response;
 				resolve(applicationCommandPermissionType || "");
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});

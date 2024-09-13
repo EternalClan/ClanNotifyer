@@ -1,4 +1,5 @@
 /* eslint-disable no-async-promise-executor */
+// eslint-disable-next-line no-unused-expressions
 require("dotenv").config;
 
 class DevCheck {
@@ -27,11 +28,12 @@ class DevCheck {
 				if (msgAuthor === serverOwner || msgAuthor === botMaster) master = true;
 				const isMaster = master;
 				resolve(isMaster || false);
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});
 	}
+
 	// Bot Master Role
 	static BotMasterRole(message) {
 		return new Promise(async (resolve, reject) => {
@@ -43,11 +45,12 @@ class DevCheck {
 				if (role != null) masterRole = true;
 				const hasRole = masterRole;
 				resolve(hasRole || false);
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});
 	}
+
 	// Bot Channel
 	static BotChannel(message) {
 		return new Promise((resolve, reject) => {
@@ -63,11 +66,12 @@ class DevCheck {
 				const isChannel = channel;
 				// if (firstChannel !== process.env.SERVER_ID) return;
 				resolve(isChannel || false);
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});
 	}
+
 	// Log Channel
 	static LogChannel(guildId) {
 		return new Promise(async (resolve, reject) => {
@@ -86,7 +90,7 @@ class DevCheck {
 				}
 				const logChannel = dataChannellog.ChannelID;
 				resolve(logChannel || "0");
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});

@@ -5,10 +5,11 @@ const timeFormat = "yyyy/LL/dd-h:mm:ss.SSS-a";
 require("dotenv").config();
 
 class TwitchAPI {
-	static requestOptions() {
+	static requestOptions () {
 		const { Get } = require("../../tools/functions/sql/db.js");
 		// eslint-disable-next-line no-undef
 		const dataConfig = Get.costumGet("Config", "SELECT * FROM discord_bot WHERE BotID = ?;", globalclient.user.id);
+		// eslint-disable-next-line no-undef
 		const getBotConfigID = `${globalclient.user.id}-${dataConfig.ShardID}`;
 		const dataTwitchOAuth = Get.notifyerByID("twitch_oauth", getBotConfigID);
 		if (dataTwitchOAuth == null) return null;
@@ -23,12 +24,12 @@ class TwitchAPI {
 			baseURL: "https://api.twitch.tv/helix/",
 			headers: {
 				"Client-ID": process.env.TWITCH_CLIENT_ID,
-				"Authorization": `Bearer ${oauthBearer}`
+				Authorization: `Bearer ${oauthBearer}`
 			}
 		};
 	}
 
-	static fetchStreams(channelNames) {
+	static fetchStreams (channelNames) {
 		return new Promise((resolve, reject) => {
 			axios.get(`/streams?user_login=${channelNames.join("&user_login=")}`, this.requestOptions())
 				.then((res) => {
@@ -41,7 +42,7 @@ class TwitchAPI {
 		});
 	}
 
-	static fetchUsers(channelNames) {
+	static fetchUsers (channelNames) {
 		return new Promise((resolve, reject) => {
 			axios.get(`/users?login=${channelNames.join("&login=")}`, this.requestOptions())
 				.then((res) => {
@@ -54,7 +55,7 @@ class TwitchAPI {
 		});
 	}
 
-	static fetchGames(gameIds) {
+	static fetchGames (gameIds) {
 		return new Promise((resolve, reject) => {
 			axios.get(`/games?id=${gameIds.join("&id=")}`, this.requestOptions())
 				.then((res) => {
@@ -67,7 +68,7 @@ class TwitchAPI {
 		});
 	}
 
-	static apiErrorHandler(err) {
+	static apiErrorHandler (err) {
 		const res = err.response || { };
 
 		if (res.data && res.data.message) {

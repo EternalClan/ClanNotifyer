@@ -14,16 +14,16 @@ module.exports = {
 		.setDescription("Setting/Removing Channels from Database.")
 		.setDMPermission(false)
 		.setDefaultMemberPermissions(
-			PermissionsBitField.Flags.ViewAuditLog
-            | PermissionsBitField.Flags.KickMembers
-            | PermissionsBitField.Flags.ManageChannels
-            | PermissionsBitField.Flags.ManageGuildExpressions
-            | PermissionsBitField.Flags.ManageGuild
-            | PermissionsBitField.Flags.ManageMessages
-            | PermissionsBitField.Flags.ManageRoles
-            | PermissionsBitField.Flags.ModerateMembers
-            | PermissionsBitField.Flags.ManageThreads
-            | PermissionsBitField.Flags.ManageWebhooks
+			PermissionsBitField.Flags.ViewAuditLog |
+            PermissionsBitField.Flags.KickMembers |
+            PermissionsBitField.Flags.ManageChannels |
+            PermissionsBitField.Flags.ManageGuildExpressions |
+            PermissionsBitField.Flags.ManageGuild |
+            PermissionsBitField.Flags.ManageMessages |
+            PermissionsBitField.Flags.ManageRoles |
+            PermissionsBitField.Flags.ModerateMembers |
+            PermissionsBitField.Flags.ManageThreads |
+            PermissionsBitField.Flags.ManageWebhooks
 		)
 		.addSubcommand(subcommand =>
 			subcommand
@@ -132,20 +132,20 @@ module.exports = {
 		}
 		if (interaction.options.getSubcommand() === "list") {
 			const tables = ["bot", "notifyer"];
-			tables.forEach(function (table) {
+			tables.forEach(function(table) {
 				let dataChannelList = Get.channelAll(`channel_${table}`, getGuildID);
 				if (dataChannelList == null) dataChannelList = { ChannelID: null };
-				const arrayOfStrings = dataChannelList.map(function (obj) {
+				const arrayOfStrings = dataChannelList.map(function(obj) {
 					return obj.ChannelID;
 				});
 				let stringChannel = `<#${arrayOfStrings.toString().replace(/[,]/gi, ">\n<#")}>`;
 				const channelRegrex = /^([a-z<#>]{3,})$/;
 				if (stringChannel == null || channelRegrex.test(stringChannel)) stringChannel = `${langChannel.nodata}`;
 				channelembed.addFields([
-					{ name: `${langChannel[table]}`, value: `${stringChannel}`, inline: true },
+					{ name: `${langChannel[table]}`, value: `${stringChannel}`, inline: true }
 				]);
 			});
-			channelembed.setDescription("<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>")
+			channelembed.setDescription("<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>..<<..>>");
 			await interaction.reply({ embeds: [channelembed] });
 		}
 		//
@@ -156,6 +156,7 @@ module.exports = {
 			const stringGetChannel = interaction.options.getChannel("channel");
 			const channelId = stringGetChannel.id;
 			const cmdSetAllChannelID = `${getGuildID}-${getShardID}-${channelId}`;
+			// eslint-disable-next-line no-unused-vars
 			const cmdSetLogChannelID = `${getGuildID}-${getShardID}`;
 
 			/**
@@ -163,6 +164,7 @@ module.exports = {
 			 * @param type - The Channel Type/Group
 			 * @param channelId - The Id of this channel
 			 */
+			// eslint-disable-next-line no-inner-declarations
 			async function channelSet(dataId, type, channelId) {
 				let dataAddChannel = Get.channelByID(`channel_${type}`, dataId);
 				if (dataAddChannel != null) {
@@ -176,7 +178,7 @@ module.exports = {
 					channelembed.setDescription(LanguageConvert.lang(langChannel.set, stringGetChannel, langChannel[type]));
 					await interaction.reply({ embeds: [channelembed] });
 				}
-			};
+			}
 
 			// Bot
 			if (stringChoicesValueSet === "bot") {
@@ -196,12 +198,14 @@ module.exports = {
 			const stringChoicesValueRemove = interaction.options.getString("removeoptions");
 			const stringGetChannel = interaction.options.getChannel("channel");
 			const cmdRemoveAllChannelID = `${getGuildID}-${getShardID}-${stringGetChannel.id}`;
+			// eslint-disable-next-line no-unused-vars
 			const cmdRemoveLogChannelID = `${getGuildID}-${getShardID}`;
 
 			/**
 			 * @param dataId - The Database table id of this entry
 			 * @param type - The Channel Type/Group
 			 */
+			// eslint-disable-next-line no-inner-declarations
 			async function channelRemove(dataId, type) {
 				const dataRemoveChannel = Get.channelByID(`channel_${type}`, dataId);
 				if (dataRemoveChannel == null) {
@@ -214,7 +218,7 @@ module.exports = {
 					channelembed.setDescription(LanguageConvert.lang(langChannel.remove, stringGetChannel, langChannel[type]));
 					await interaction.reply({ embeds: [channelembed] });
 				}
-			};
+			}
 
 			// Bot
 			if (stringChoicesValueRemove === "bot") {
@@ -229,15 +233,18 @@ module.exports = {
 
 		if (interaction.options.getSubcommand() === "prune") {
 			let stringChoicesValue = interaction.options.getString("pruneoptions");
-			
+
 			let countRemove = 0;
+			// eslint-disable-next-line no-unused-vars
 			let countKeep = 0;
+			// eslint-disable-next-line no-unused-vars
 			let countTotal = 0;
 
 			/**
 			 * @param guildId - The ID of the guild
 			 * @param type - The Channel Type/Group
 			 */
+			// eslint-disable-next-line no-inner-declarations
 			async function channelValidate(guildId, type) {
 				const dataValidateChannel = Get.channelAll(`channel_${type}`, guildId);
 				if (dataValidateChannel == null) {
@@ -250,8 +257,8 @@ module.exports = {
 						const channeId = data.ChannelID;
 						const channel = await interaction.guild.channels.fetch(channeId);
 						if (!channel) {
-							const removeChannel = `${getBotConfigID}-${channeId}`
-							Del.channelByID(`channel_${type}`, removeChannel)
+							const removeChannel = `${getBotConfigID}-${channeId}`;
+							Del.channelByID(`channel_${type}`, removeChannel);
 							countRemove++;
 							countTotal++;
 						}
@@ -259,13 +266,13 @@ module.exports = {
 							countKeep++;
 							countTotal++;
 						}
-					})
+					});
 					channelembed.setDescription(LanguageConvert.lang(langChannel.prune, countRemove));
 				}
-			};
-			
+			}
+
 			if (!stringChoicesValue) {
-				stringChoicesValue = ["bot","notifyer"];
+				stringChoicesValue = ["bot", "notifyer"];
 				stringChoicesValue.forEach(type => {
 					channelValidate(getGuildID, type);
 				});

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 const { PermissionsBitField, SlashCommandBuilder } = require("discord.js");
 const { globSync } = require("glob");
@@ -14,16 +15,16 @@ module.exports = {
 		.setDescription("Reloads a command.")
 		.setDMPermission(false)
 		.setDefaultMemberPermissions(
-			PermissionsBitField.Flags.ViewAuditLog
-            | PermissionsBitField.Flags.KickMembers
-            | PermissionsBitField.Flags.ManageChannels
-            | PermissionsBitField.Flags.ManageGuildExpressions
-            | PermissionsBitField.Flags.ManageGuild
-            | PermissionsBitField.Flags.ManageMessages
-            | PermissionsBitField.Flags.ManageRoles
-            | PermissionsBitField.Flags.ModerateMembers
-            | PermissionsBitField.Flags.ManageThreads
-            | PermissionsBitField.Flags.ManageWebhooks
+			PermissionsBitField.Flags.ViewAuditLog |
+            PermissionsBitField.Flags.KickMembers |
+            PermissionsBitField.Flags.ManageChannels |
+            PermissionsBitField.Flags.ManageGuildExpressions |
+            PermissionsBitField.Flags.ManageGuild |
+            PermissionsBitField.Flags.ManageMessages |
+            PermissionsBitField.Flags.ManageRoles |
+            PermissionsBitField.Flags.ModerateMembers |
+            PermissionsBitField.Flags.ManageThreads |
+            PermissionsBitField.Flags.ManageWebhooks
 		)
 		.addStringOption(option =>
 			option.setName("command")
@@ -36,8 +37,8 @@ module.exports = {
 		// console.log(focusedOption);
 		let choices = [];
 
-		if (focusedOption.name === 'command') {
-			let cmds = [];
+		if (focusedOption.name === "command") {
+			const cmds = [];
 			interaction.client.commands.forEach(cmd => {
 				cmds.push(cmd.data.name);
 			});
@@ -48,13 +49,12 @@ module.exports = {
 
 		const filtered = choices.filter(choice => choice.startsWith(focusedOption.value));
 		await interaction.respond(
-			filtered.map(choice => ({ name: choice, value: choice })),
+			filtered.map(choice => ({ name: choice, value: choice }))
 		);
 	},
 	async execute(interaction) {
-
-		if (interaction == null
-		|| interaction.channel.id == null) return console.log(`[${DateTime.utc().toFormat(timeFormat)}][ClanBot] Interaction of Command 'reload' returned 'null / undefined'.`);
+		if (interaction == null ||
+		interaction.channel.id == null) return console.log(`[${DateTime.utc().toFormat(timeFormat)}][ClanBot] Interaction of Command 'reload' returned 'null / undefined'.`);
 
 		const { Get } = require("../../../tools/functions/sql/db.js");
 		const getGuildID = `${interaction.guild.id}`;

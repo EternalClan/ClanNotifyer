@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 const Discord = require("discord.js");
 const { EmbedBuilder, PermissionsBitField, SlashCommandBuilder } = Discord;
@@ -14,16 +15,16 @@ module.exports = {
 		.setDescription("Editing Notifyers from Database.")
 		.setDMPermission(false)
 		.setDefaultMemberPermissions(
-			PermissionsBitField.Flags.ViewAuditLog
-            | PermissionsBitField.Flags.KickMembers
-            | PermissionsBitField.Flags.ManageChannels
-            | PermissionsBitField.Flags.ManageGuildExpressions
-            | PermissionsBitField.Flags.ManageGuild
-            | PermissionsBitField.Flags.ManageMessages
-            | PermissionsBitField.Flags.ManageRoles
-            | PermissionsBitField.Flags.ModerateMembers
-            | PermissionsBitField.Flags.ManageThreads
-            | PermissionsBitField.Flags.ManageWebhooks
+			PermissionsBitField.Flags.ViewAuditLog |
+            PermissionsBitField.Flags.KickMembers |
+            PermissionsBitField.Flags.ManageChannels |
+            PermissionsBitField.Flags.ManageGuildExpressions |
+            PermissionsBitField.Flags.ManageGuild |
+            PermissionsBitField.Flags.ManageMessages |
+            PermissionsBitField.Flags.ManageRoles |
+            PermissionsBitField.Flags.ModerateMembers |
+            PermissionsBitField.Flags.ManageThreads |
+            PermissionsBitField.Flags.ManageWebhooks
 		)
 		.addSubcommandGroup(subcommandgroup =>
 			subcommandgroup
@@ -127,11 +128,11 @@ module.exports = {
 
 		// Twitch
 		const twitchAnnouncements = Get.notifyerAll("twitch_announcement", getGuildID);
-		let twitchChannelIds = [];
+		const twitchChannelIds = [];
 		twitchAnnouncements.forEach(twitch => {
 			twitchChannelIds.push(twitch.TwitchChannelID);
-		})
-		if (focusedOption.name === 'twitchchannelid') {
+		});
+		if (focusedOption.name === "twitchchannelid") {
 			choices = twitchChannelIds.filter(rName => rName.startsWith(focusedOption.value));
 			if (choices.length > 25) choices = [];
 		}
@@ -139,16 +140,17 @@ module.exports = {
 		// Response
 		const filtered = choices.filter(choice => choice.startsWith(focusedOption.value));
 		await interaction.respond(
-			filtered.map(choice => ({ name: choice, value: choice })),
+			filtered.map(choice => ({ name: choice, value: choice }))
 		);
 	},
 	async execute(interaction) {
-		if (interaction == null || interaction.channel.id == null
-		|| interaction.guild.id == null) return console.log(`[${DateTime.utc().toFormat(timeFormat)}][ClanBot] Interaction of Command '${this.data.name}' returned 'null / undefined'.`);
+		if (interaction == null || interaction.channel.id == null ||
+		interaction.guild.id == null) return console.log(`[${DateTime.utc().toFormat(timeFormat)}][ClanBot] Interaction of Command '${this.data.name}' returned 'null / undefined'.`);
 
 		// Require and Get
 		const { Get, Set, Del } = require("../../../tools/functions/sql/db.js");
 		const { LanguageConvert } = require("../../../tools/functions/languageConvert.js");
+		// eslint-disable-next-line no-undef
 		const getClientID = `${globalclient.user.id}`;
 		const getGuildID = `${interaction.guild.id}`;
 		const getShardID = `${interaction.guild.shardId}`;
@@ -162,6 +164,7 @@ module.exports = {
 		if (dataLang == null) dataLang = { Lang: "en_US" };
 		const lang = require(`../../../../data/lang/${dataLang.Lang}/${dataLang.Lang}.json`);
 		const langError = require(`../../../../data/lang/${dataLang.Lang}/error.json`);
+		// eslint-disable-next-line no-unused-vars
 		const langNotifyer = lang.cmd.admin.notifyers.all;
 		const langTwitch = lang.cmd.admin.notifyers.twitch;
 
@@ -170,7 +173,7 @@ module.exports = {
 		dataCommandAdmin = Get.toggleByID("command_admin", getBotConfigID);
 		if (dataCommandAdmin == null) dataCommandAdmin = { Channels: "true" };
 		if (dataCommandAdmin.Test === "false") return await interaction.reply({ content: langError.command.disabled, ephemeral: true });
-		
+
 		// Channels Admin
 		let dataChannelAdmin;
 		dataChannelAdmin = Get.channelByID("channel_bot", getChannelRoleID);
@@ -192,7 +195,7 @@ module.exports = {
 		if (interaction.options.getSubcommandGroup() === "twitch") {
 			//
 			// Help
-			if(interaction.options.getSubcommand() === "help") {
+			if (interaction.options.getSubcommand() === "help") {
 				// \nc.channels edit <channel> <admin|user|all>
 				configembed.addFields(
 					{ name: langTwitch.twitch.helptitle, value: langTwitch.helpvalue, inline: false }
@@ -206,17 +209,17 @@ module.exports = {
 				let dataTwitchAnnounceList = Get.notifyerAll("twitch_announcement", getGuildID);
 				// Return if Data is 'undefined' or 'null'.
 				if (dataTwitchAnnounceList == null) dataTwitchAnnounceList = { TwitchAnnounceID: "guildId-shardId-twitchChannelId", GuildID: "guildId", ShardID: "shardId", BotID: "botId", TwitchChannelID: "twitchChannelId", Announce: "false", MentionName: "here" };
-				let twitchAnnounce = [];
-				let twitchChannel = [];
-				let twitchMention = [];
+				const twitchAnnounce = [];
+				const twitchChannel = [];
+				const twitchMention = [];
 				dataTwitchAnnounceList.forEach(twitchAnnouncement => {
 					twitchAnnounce.push(twitchAnnouncement.Announce);
 					twitchChannel.push(twitchAnnouncement.TwitchChannelID);
 					twitchMention.push(twitchAnnouncement.Mention);
 				});
-				let newTwitchAnnounce = twitchAnnounce.toString().replace(", ","\n");
-				let newTwitchChannel = twitchChannel.toString().replace(", ","\n");
-				let newTwitchMention = twitchMention.toString().replace(", ","\n");
+				let newTwitchAnnounce = twitchAnnounce.toString().replace(", ", "\n");
+				let newTwitchChannel = twitchChannel.toString().replace(", ", "\n");
+				let newTwitchMention = twitchMention.toString().replace(", ", "\n");
 				if (newTwitchAnnounce === "") newTwitchAnnounce = langTwitch.norecordfound;
 				if (newTwitchChannel === "") newTwitchChannel = langTwitch.norecordfound;
 				if (newTwitchMention === "") newTwitchMention = langTwitch.norecordfound;
@@ -249,7 +252,7 @@ module.exports = {
 				if (dataTwitchOAuth == null) return console.log(langTwitch.notoken);
 				const oauthBearer = dataTwitchOAuth.Token;
 				if (oauthBearer == null || oauthBearer === "0" || DateTime.utc().toISO() > dataTwitchOAuth.Cooldown) {
-					await interaction.reply({ content: langTwitch.tokenneeded, ephemeral: true });return;
+					await interaction.reply({ content: langTwitch.tokenneeded, ephemeral: true }); return;
 				}
 				await TwitchAPI.fetchUsers(channelNames, getShardID)
 					.then((users) => {
@@ -258,7 +261,7 @@ module.exports = {
 					.catch((err) => {
 						console.warn("[" + DateTime.utc().toFormat(timeFormat) + "][TwitchCommand]" + "Error in users request:", err);
 					});
-				if (cue == null) {interaction.reply({ content: LanguageConvert.lang(langTwitch.notatwitchchannel, stringTwitchChannelID), ephemeral: true });return;}
+				if (cue == null) { interaction.reply({ content: LanguageConvert.lang(langTwitch.notatwitchchannel, stringTwitchChannelID), ephemeral: true }); return; }
 				const getTwitchAnnounceID = `${getGuildID}-${getShardID}-${channelNames}`;
 				let dataAddTwitchAnnounce;
 				dataAddTwitchAnnounce = Get.notifyerByID("twitch_announcement", getTwitchAnnounceID);
@@ -296,19 +299,20 @@ module.exports = {
 			}
 			//
 			// Edit
-			if(interaction.options.getSubcommand() === "edit") {
+			if (interaction.options.getSubcommand() === "edit") {
 				const stringTwitchChannelID = interaction.options.getString("twitchchannelid");
 				const stringChoisAnnounce = interaction.options.getString("announce");
 				const stringMentionRole = interaction.options.getRole("mention");
-				let role = dataEditTwitchAnnounce.MentionName;
-				let announce = dataEditTwitchAnnounce.Announce;
 				const getTwitchAnnounceID = `${getGuildID}-${getShardID}-${stringTwitchChannelID}`;
 				let dataEditTwitchAnnounce;
 				dataEditTwitchAnnounce = Get.notifyerByID("twitch_announcement", getTwitchAnnounceID);
 				if (dataEditTwitchAnnounce == null) {
 					twitchembed.setDescription(langTwitch.channelnotfound);
 					await interaction.reply({ embeds: [twitchembed] });
-				} else if (dataEditTwitchAnnounce != null) {
+				}
+				let role = dataEditTwitchAnnounce.MentionName;
+				let announce = dataEditTwitchAnnounce.Announce;
+				if (dataEditTwitchAnnounce != null) {
 					if (stringMentionRole != null) {
 						role = stringMentionRole.name;
 					}
@@ -326,7 +330,7 @@ module.exports = {
 			}
 			//
 			// Remove
-			if(interaction.options.getSubcommand() === "remove") {
+			if (interaction.options.getSubcommand() === "remove") {
 				const stringTwitchChannelID = interaction.options.getString("twitchchannelid");
 				const getTwitchAnnounceID = `${getGuildID}-${getShardID}-${stringTwitchChannelID}`;
 				const dataRemoveTwitchAnnounce = Get.notifyerByID("twitch_announcement", getTwitchAnnounceID);
@@ -344,6 +348,6 @@ module.exports = {
 			}
 		}
 		//
-		// 
+		//
 	}
 };

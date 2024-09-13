@@ -22,4 +22,4 @@ process.on("uncaughtException", (err, errs) => {
 	console.error(`[ERROR] Uncaught errors: \n${errs.stack}`);
 	// process.exit(1); //mandatory (as per the Node.js docs)
 });
-//--------END--------//
+// --------END-------- //

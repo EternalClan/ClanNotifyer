@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
-const String = require("node:string_decoder");
+// eslint-disable-next-line no-unused-expressions
 require("dotenv").config;
 
 class LanguageConvert {
@@ -43,23 +43,23 @@ class LanguageConvert {
 				if (code === "vi" || code === "vi_VN") langCode = "Vietnamese / Tiếng Việt";
 				const langNew = langCode;
 				resolve(langNew || "");
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});
 	}
 
 	/**
-	 * 
-	 * @param text 
-	 * @param values 
+	 *
+	 * @param text
+	 * @param values
 	 * @returns
 	 */
 	static lang(text, ...values) {
 		let lang = text;
 		values.forEach(value => {
 			lang = lang.replace("$s", `${value}`);
-		})
+		});
 		const language = lang;
 		return language;
 	}

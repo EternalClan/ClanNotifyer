@@ -6,7 +6,7 @@ class Del {
 
 	/**
 	 * Del a set of Data from an Database with the given parameters value.
-	 * 
+	 *
 	 * @remarks
 	 * You will need to created the SQL String yourself. better-sqlite3 is used here.
 	 * @param database - The Database to be used
@@ -22,7 +22,7 @@ class Del {
 
 	/**
 	 * Del one set of Data from an Database with the given parameters value.
-	 * 
+	 *
 	 * @param database - The Database to be used
 	 * @param table - The Database Table to search in
 	 * @param column - The Column to be search with
@@ -38,7 +38,7 @@ class Del {
 
 	/**
 	 * Del all set's of Data from an Database with the given parameters value.
-	 * 
+	 *
 	 * @param database - The Database to be used
 	 * @param table - The Database Table to search in
 	 * @param column - The Column to be search with
@@ -57,7 +57,7 @@ class Del {
 
 	/**
 	 * Del the first matching Dataset of a Table in Database Config by the given ID.
-	 * 
+	 *
 	 * @remarks
 	 * The Config name is equel to the Databases table name.
 	 * @param table - The Name of the config
@@ -71,7 +71,7 @@ class Del {
 
 	/**
 	 * Del all matching Dataset of a Table in Database Config by the given GuildID.
-	 * 
+	 *
 	 * @remarks
 	 * The Config name is equel to the Databases table name.
 	 * @param table - The Name of the config
@@ -86,7 +86,7 @@ class Del {
 
 	/**
 	 * Del the first matching Dataset of a Table in Database Toggle by the given ID.
-	 * 
+	 *
 	 * @remarks
 	 * The Toggle name is equel to the Databases table name.
 	 * @param table - The Name of the toggle
@@ -100,7 +100,7 @@ class Del {
 
 	/**
 	 * Del all matching Dataset of a Table in Database Toggle by the given GuildID.
-	 * 
+	 *
 	 * @remarks
 	 * The Toggle name is equel to the Databases table name.
 	 * @param table - The Name of the toggle
@@ -115,7 +115,7 @@ class Del {
 
 	/**
 	 * Del the first matching Dataset of a Table in Database Channel by the given ID.
-	 * 
+	 *
 	 * @remarks
 	 * The Channel name is equel to the Databases table name.
 	 * @param table - The Name of the channel
@@ -129,7 +129,7 @@ class Del {
 
 	/**
 	 * Del all matching Dataset of a Table in Database Channel by the given GuildID.
-	 * 
+	 *
 	 * @remarks
 	 * The Channel name is equel to the Databases table name.
 	 * @param table - The Name of the channel
@@ -144,7 +144,7 @@ class Del {
 
 	/**
 	 * Del the first matching Dataset of a Table in Database Role by the given ID.
-	 * 
+	 *
 	 * @remarks
 	 * The Role name is equel to the Databases table name.
 	 * @param table - The Name of the role
@@ -158,7 +158,7 @@ class Del {
 
 	/**
 	 * Del all matching Dataset of a Table in Database Role by the given GuildID.
-	 * 
+	 *
 	 * @remarks
 	 * The Role name is equel to the Databases table name.
 	 * @param table - The Name of the role
@@ -173,7 +173,7 @@ class Del {
 
 	/**
 	 * Del the first matching Dataset of a Table in Database Notifyer by the given ID.
-	 * 
+	 *
 	 * @remarks
 	 * The Notifyer name is equel to the Databases table name.
 	 * @param table - The Name of the Notifyer
@@ -187,7 +187,7 @@ class Del {
 
 	/**
 	 * Del all matching Dataset of a Table in Database Notifyer by the given GuildID.
-	 * 
+	 *
 	 * @remarks
 	 * The Notifyer name is equel to the Databases table name.
 	 * @param table - The Name of the Notifyer

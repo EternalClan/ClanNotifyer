@@ -21,7 +21,7 @@ module.exports = {
 		global.globaltwitchready = false;
 		const handlerList = ["command_handler", "twitch_handler"];
 		handlerList.forEach(modulesHandler => {
-			require(`../../handler/${modulesHandler}`) (globalclient);
+			require(`../../handler/${modulesHandler}`)(globalclient);
 		});
 
 		console.log(`[Time] ${DateTime.utc().toFormat(timeFormat)} [UTC]`);

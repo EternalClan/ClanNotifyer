@@ -3,7 +3,7 @@
 require("dotenv").config();
 
 class SQLiteTableData {
-	static data(guild) {
+	static data (guild) {
 		// SQLite
 		const { Get, Set } = require("../functions/sql/db.js");
 		// Get/Set

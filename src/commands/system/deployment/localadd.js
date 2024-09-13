@@ -27,7 +27,7 @@ module.exports = (message) => {
 	const commands = [];
 	const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 	// Getting Directory name from list and filter out .js filesin to a string.
-	const load_dir = (mainDirs, subDirs) => {
+	const loadDir = (mainDirs, subDirs) => {
 		const commandFiles = readdirSync(`./src/commands/${mainDirs}/${subDirs}`).filter(cmdFile => cmdFile.endsWith(".js"));
 		// Grabs files out of the string, one by one (for loop) and Sets Command in the Collection.
 		for (const cmdFile of commandFiles) {
@@ -39,10 +39,10 @@ module.exports = (message) => {
 		}
 	};
 	// Directory name array list.
-	const mainCmdDirs = [ "admin" ];
+	const mainCmdDirs = ["admin"];
 	mainCmdDirs.forEach(mainDir => {
 		const subCmdDirs = readdirSync(`./src/commands/${mainDir}`);
-		subCmdDirs.forEach(subDir => load_dir(mainDir, subDir));
+		subCmdDirs.forEach(subDir => loadDir(mainDir, subDir));
 	});
 	(async () => {
 		try {

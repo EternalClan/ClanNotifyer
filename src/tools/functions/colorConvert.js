@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-expressions
 require("dotenv").config;
 
 class ColorConvert {
@@ -10,11 +11,12 @@ class ColorConvert {
 				if (colorHexInt === "0") colorHexInt = "#000000";
 				const colorHex = colorHexInt;
 				resolve(colorHex || "");
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});
 	}
+
 	// Hex to Int
 	static HexToInt(hexadecimal) {
 		return new Promise((resolve, reject) => {
@@ -24,7 +26,7 @@ class ColorConvert {
 				if (isNaN(colorIntHex)) colorIntHex = "0";
 				const colorInt = colorIntHex;
 				resolve(colorInt || "");
-			} catch(err) {
+			} catch (err) {
 				reject(err);
 			}
 		});

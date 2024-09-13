@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 const { PermissionsBitField, SlashCommandBuilder } = require("discord.js");
 const { DateTime } = require("luxon");
@@ -13,20 +14,20 @@ module.exports = {
 		.setDescription("pinging")
 		.setDMPermission(false)
 		.setDefaultMemberPermissions(
-			PermissionsBitField.Flags.ViewAuditLog
-            | PermissionsBitField.Flags.KickMembers
-            | PermissionsBitField.Flags.ManageChannels
-            | PermissionsBitField.Flags.ManageGuildExpressions
-            | PermissionsBitField.Flags.ManageGuild
-            | PermissionsBitField.Flags.ManageMessages
-            | PermissionsBitField.Flags.ManageRoles
-            | PermissionsBitField.Flags.ModerateMembers
-            | PermissionsBitField.Flags.ManageThreads
-            | PermissionsBitField.Flags.ManageWebhooks
+			PermissionsBitField.Flags.ViewAuditLog |
+            PermissionsBitField.Flags.KickMembers |
+            PermissionsBitField.Flags.ManageChannels |
+            PermissionsBitField.Flags.ManageGuildExpressions |
+            PermissionsBitField.Flags.ManageGuild |
+            PermissionsBitField.Flags.ManageMessages |
+            PermissionsBitField.Flags.ManageRoles |
+            PermissionsBitField.Flags.ModerateMembers |
+            PermissionsBitField.Flags.ManageThreads |
+            PermissionsBitField.Flags.ManageWebhooks
 		),
 	async execute(interaction) {
-		if (interaction == null || interaction.channel.id == null
-		|| interaction.guild.id == null) return console.log(`[${DateTime.utc().toFormat(timeFormat)}][ClanBot] Interaction of Command 'ping' returned 'null / undefined'.`);
+		if (interaction == null || interaction.channel.id == null ||
+		interaction.guild.id == null) return console.log(`[${DateTime.utc().toFormat(timeFormat)}][ClanBot] Interaction of Command 'ping' returned 'null / undefined'.`);
 
 		const { Get } = require("../../../tools/functions/sql/db.js");
 		const getGuildID = `${interaction.guild.id}`;
@@ -44,7 +45,7 @@ module.exports = {
 		if (dataChannelAdminGuild == null) dataChannelAdmin = { ChannelID: `${getChannelID}` };
 
 		const lang = require(`../../../../data/lang/${dataLang.Lang}/${dataLang.Lang}.json`);
-		const langError = require(`../../../../data/lang/${dataLang.Lang}/error.json`)
+		const langError = require(`../../../../data/lang/${dataLang.Lang}/error.json`);
 		const permissions = interaction.member.permissions;
 		if (dataCommandAdmin.Ping !== "true") return await interaction.reply({ content: langError.command.disabled, ephemeral: true });
 		if (!permissions.has(PermissionsBitField.Flags.ViewAuditLog) || !permissions.has(PermissionsBitField.Flags.ManageChannels)) return await interaction.reply({ content: langError.permission.admin, ephemeral: true });

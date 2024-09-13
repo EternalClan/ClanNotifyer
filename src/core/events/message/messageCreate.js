@@ -12,7 +12,6 @@ module.exports = {
      * @param {Message} message
      */
 	async execute(message) {
-
 		// console.log(message.content);
 		// Check for Bot.
 		if (!message.author || message.author.bot) return;

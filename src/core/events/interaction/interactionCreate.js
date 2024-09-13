@@ -37,6 +37,7 @@ module.exports = {
 
 				if (now < expirationTime) {
 					const expiredTimestamp = Math.round(expirationTime / 1000);
+					// eslint-disable-next-line no-unused-vars
 					const prasInted = parseInt(expiredTimestamp);
 					return interaction.reply({ content: LanguageConvert.lang(langError.command.cooldown, command.data.name), ephemeral: true });
 				}

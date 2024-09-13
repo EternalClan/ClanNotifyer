@@ -35,7 +35,7 @@ module.exports = () => {
 	dataTwitchOAuth = Get.notifyerByID("twitch_oauth", getBotConfigID);
 	// dataTwitchOAuth = Get.twitchOAuth(getBotConfigID);
 	if (dataTwitchOAuth == null) dataTwitchOAuth = { NotifyerID: getBotConfigID, GuildID: dataConfig.GuildID, ShardID: dataConfig.ShardID, BotID: dataConfig.BotID, OAuthType: "client_credentials", Token: "0", Cooldown: "2020-01-04T18:15:32.640Z" };
-	
+
 	// Init Oauth request
 	if (dataTwitchOAuth.Token === "0" || dataTwitchOAuth.Cooldown < DateTime.utc().toISO()) {
 		TwitchOAuth.client_credentials(getBotConfigID, dataTwitchOAuth);
@@ -44,33 +44,35 @@ module.exports = () => {
 	// Discord Channels
 	let targetChannels;
 	// eslint-disable-next-line no-inner-declarations
-	function syncServerList(logMembership) {
+	function syncServerList (logMembership) {
 		const dataTwitchDiscordChannel = Get.channelByID("channel_notifyer", `${getBotConfigID}-twitch`);
 		if (dataTwitchDiscordChannel == null) return;
-		// eslint-disable-next-line no-undef
+		// eslint-disable-next-line no-undef, no-return-assign
 		return targetChannels = DiscordChannelSync.getChannelList(globalclient, dataTwitchDiscordChannel.ChannelID, logMembership);
 	}
 
 	// Activity updater
 	class StreamActivity {
 		/**
-					* Registers a channel that has come online, and updates the user activity.
-					*/
-		static setChannelOnline(stream) {
+		 * Registers a channel that has come online, and updates the user activity.
+		 */
+		static setChannelOnline (stream) {
 			this.onlineChannels[stream.user_name] = stream;
 			this.updateActivity();
 		}
+
 		/**
-						* Marks a channel has having gone offline, and updates the user activity if needed.
-						*/
-		static setChannelOffline(stream) {
+		 * Marks a channel has having gone offline, and updates the user activity if needed.
+		 */
+		static setChannelOffline (stream) {
 			delete this.onlineChannels[stream.user_name];
 			this.updateActivity();
 		}
+
 		/**
-						* Fetches the channel that went online most recently, and is still currently online.
-						*/
-		static getMostRecentStreamInfo() {
+		 * Fetches the channel that went online most recently, and is still currently online.
+		 */
+		static getMostRecentStreamInfo () {
 			let lastChannel = null;
 			for (const channelName in this.onlineChannels) {
 				if (typeof channelName !== "undefined" && channelName) {
@@ -79,32 +81,36 @@ module.exports = () => {
 			}
 			return lastChannel;
 		}
+
 		/**
-						* Updates the user activity on Discord.
-						* Either clears the activity if no channels are online, or sets it to "watching" if a stream is up.
-						*/
-		static updateActivity() {
+		 * Updates the user activity on Discord.
+		 * Either clears the activity if no channels are online, or sets it to "watching" if a stream is up.
+		 */
+		static updateActivity () {
 			const streamInfo = this.getMostRecentStreamInfo();
 			if (streamInfo) {
+				// eslint-disable-next-line no-undef
 				globalclient.user.setActivity(streamInfo.user_name, {
-					"url": `https://twitch.tv/${streamInfo.user_name.toLowerCase()}`,
-					"type": "STREAMING"
+					url: `https://twitch.tv/${streamInfo.user_name.toLowerCase()}`,
+					type: "STREAMING"
 				});
 				// eslint-disable-next-line max-len
 				// console.log("[" + DateTime.utc().toFormat(timeFormat) + "][StreamActivity]", `Update current activity: watching ${streamInfo.user_name}.`);
 			} else {
 				// console.log("[" + DateTime.utc().toFormat(timeFormat) + "][StreamActivity]", "Cleared current activity.");
+				// eslint-disable-next-line no-undef
 				globalclient.user.setActivity(null);
 			}
 		}
 
-		static init(discordClient) {
+		static init (discordClient) {
 			this.discordClient = discordClient;
 			this.onlineChannels = { };
 			// Continue to update current stream activity every 5 minutes or so
 			// We need to do this b/c Discord sometimes refuses to update for some reason
 			// ...maybe this will help, hopefully
-			var initInterval = setInterval(this.updateActivity.bind(this), 5 * 60 * 1000);
+			const initInterval = setInterval(this.updateActivity.bind(this), 5 * 60 * 1000);
+			// eslint-disable-next-line no-unused-expressions
 			initInterval;
 			// process.on("STOP", (signal) => clearInterval(initInterval));
 		}
@@ -112,7 +118,6 @@ module.exports = () => {
 
 	// First start
 	if (dataTwitch.Twitch === "true") {
-
 		// Init list of connected servers, and determine which channels we are announcing to
 		syncServerList(true);
 
@@ -126,14 +131,15 @@ module.exports = () => {
 
 	if (dataTwitch.Twitch === "true") {
 		// Oauth request
-		var oauthintervalms = 1000 * 60 * 60 * 24;
-		var oauthInterval = setInterval(() => {
+		const oauthintervalms = 1000 * 60 * 60 * 24;
+		const oauthInterval = setInterval(() => {
 			dataTwitchOAuth = Get.notifyerByID("twitch_oauth", getBotConfigID);
 			if (dataTwitchOAuth == null) dataTwitchOAuth = { TwitchOAuthID: getBotConfigID, GuildID: dataConfig.GuildID, ShardID: dataConfig.ShardID, OAuthType: "client_credentials", Token: "0", Cooldown: "2020-01-04T18:15:32.640Z" };
 			if (dataTwitchOAuth.Token === "0" || dataTwitchOAuth.Cooldown < DateTime.utc().toISO()) {
 				TwitchOAuth.client_credentials(getBotConfigID, dataTwitchOAuth);
 			}
-		}, oauthintervalms)
+		}, oauthintervalms);
+		// eslint-disable-next-line no-unused-expressions
 		oauthInterval;
 		// Main Body
 
