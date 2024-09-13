@@ -35,6 +35,8 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # Directorys #
 ##############
 node_modules/
+pnpm_node_modules/
+npm_node_modules/
 backup/
 data/sqlite/
 miniDB/
@@ -43,3 +45,4 @@ miniDB/
 #########
 .eslintrc.json*
 twitchOAuth.json*
+pnpm-lock.yaml*
