@@ -2,9 +2,9 @@
 [![Discord server](https://img.shields.io/discord/720746186788831323?color=%237289da&label=discord%20server&logo=discord)](https://discord.gg/cFyC9pmanj)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
 [![LICENSE](https://img.shields.io/github/license/EternalClan/ClanNotifyer?style=flat-square)](LICENSE)
-[[release](https://img.shields.io/github/v/release/EternalClan/ClanNotifyer?include_prereleases&display_name=release&style=flat-square)](releases)
-[[Build Status](https://github.com/EternalClan/ClanNotifyer/workflows/Node.js%20CI/badge.svg)](https://github.com/EternalClan/ClanNotifyer/actions)
-[[Maintenance](https://img.shields.io/maintenance/yes/2024?style=flat-square)](https://github.com/EternalClan/ClanNotifyer/graphs/commit-activity)
+[![release](https://img.shields.io/github/v/release/EternalClan/ClanNotifyer?include_prereleases&display_name=release&style=flat-square)](releases)
+[![Build Status](https://github.com/EternalClan/ClanNotifyer/workflows/Node.js%20CI/badge.svg)](https://github.com/EternalClan/ClanNotifyer/actions)
+[![Maintenance](https://img.shields.io/maintenance/yes/2024?style=flat-square)](https://github.com/EternalClan/ClanNotifyer/graphs/commit-activity)
 
 🤖 **A simple, customizable Discord bot that announces Twitch streams (plus a bunch of silly extras).**
 
