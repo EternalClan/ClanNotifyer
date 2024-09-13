@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "standard",
     "lint-readme": "standard-markdown",
-    "test": "./.eslintrc.js",
+    "test": "tap .eslintrc.js",
 	"release": "standard-version"
   },
   "author": {
